@@ -111,7 +111,7 @@ export const metadata: Metadata = {
   },
   category: "technology",
   verification: {
-    google: "YOUR_GOOGLE_VERIFICATION_CODE",
+    google: "LuWVy2C7EWNJxupUoUB3lmQ5YaOKMwGBU5KCx5EVP78",
   },
 };
 
