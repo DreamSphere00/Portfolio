@@ -7,6 +7,7 @@ export default function Hero() {
     return (
         <section
             id="hero"
+            aria-label="DreamSphere — Digital Agency in Bengaluru"
             className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-main"
         >
             {/* Animated background glow orbs — smaller on mobile */}
@@ -57,7 +58,7 @@ export default function Hero() {
                     <div className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#49E29B]/20 bg-[#49E29B]/5">
                         <Sparkles size={14} className="text-accent" />
                         <span className="text-xs sm:text-sm text-accent font-medium">
-                            Premium Digital Agency
+                            Premium Digital Agency in Bengaluru
                         </span>
                     </div>
                 </motion.div>
@@ -73,6 +74,7 @@ export default function Hero() {
                     <br />
                     <span className="text-gradient">Experiences</span> That{" "}
                     <span className="text-gradient">Convert</span>
+                    <span className="sr-only"> — Web Development, AI Automation &amp; Cloud Solutions Agency in Bengaluru, India</span>
                 </motion.h1>
 
                 {/* Subheading */}
@@ -82,9 +84,9 @@ export default function Hero() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="text-base sm:text-lg md:text-xl text-text-secondary max-w-xs sm:max-w-lg md:max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2"
                 >
-                    We are a team of strategists, designers, and engineers who craft
-                    stunning digital products that drive real business results. From
-                    concept to launch, we deliver excellence.
+                    We are a Bengaluru-based team of full-stack developers, AI engineers, and designers
+                    who craft stunning web applications using React, Next.js, Spring Boot, and Python.
+                    From concept to cloud deployment — we deliver digital excellence that drives real business results.
                 </motion.p>
 
                 {/* CTA Buttons */}

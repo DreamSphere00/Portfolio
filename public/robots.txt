@@ -1,0 +1,13 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://dreamsphere.online/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Block unnecessary paths
+Disallow: /_next/
+Disallow: /api/
