@@ -19,7 +19,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL("https://dreamsphere.online"),
   title: {
-    default: "DreamSphere — #1 Digital Agency in Bengaluru | Web Development, AI & Cloud Solutions",
+    default: "DreamSphere — Top Digital Agency in Bengaluru | Web Development, AI & Cloud Solutions",
     template: "%s | DreamSphere — Digital Agency Bengaluru",
   },
   description:
