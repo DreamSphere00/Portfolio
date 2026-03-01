@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Globe, Server, Figma, MessageSquareMore, Zap } from "lucide-react";
+import { Globe, Server, Figma, MessageSquareMore, Zap, Cloud } from "lucide-react";
 
 const services = [
     {
@@ -15,7 +15,7 @@ const services = [
         icon: Server,
         title: "Backend Systems",
         description:
-            "Scalable, secure server-side architectures using Node.js, Python, and cloud infrastructure that power your applications with reliability and speed.",
+            "Scalable, secure server-side architectures using Spring Boot, Node.js, Python, and cloud infrastructure that power your applications with reliability and speed.",
     },
     {
         icon: Figma,
@@ -34,6 +34,12 @@ const services = [
         title: "Automation",
         description:
             "End-to-end workflow automation that eliminates repetitive tasks, integrates your tools, and accelerates your business processes at scale.",
+    },
+    {
+        icon: Cloud,
+        title: "Cloud Deployment",
+        description:
+            "Seamless deployment and scaling on AWS, GCP, and Azure. CI/CD pipelines, containerization with Docker, and infrastructure management for production-grade apps.",
     },
 ];
 
@@ -77,8 +83,7 @@ export default function Services() {
                             initial={{ opacity: 0, y: 40 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-                            className={`group relative p-6 sm:p-8 rounded-2xl bg-gradient-card border border-[#49E29B]/10 hover:border-[#49E29B]/30 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_20px_60px_rgba(73,226,155,0.1)] ${index === 4 ? "sm:col-span-2 lg:col-span-1 sm:max-w-md sm:mx-auto lg:max-w-none" : ""
-                                }`}
+                            className="group relative p-6 sm:p-8 rounded-2xl bg-gradient-card border border-[#49E29B]/10 hover:border-[#49E29B]/30 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_20px_60px_rgba(73,226,155,0.1)]"
                         >
                             <div className="absolute inset-0 rounded-2xl bg-[#49E29B]/0 group-hover:bg-[#49E29B]/[0.03] transition-all duration-300" />
 

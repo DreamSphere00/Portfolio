@@ -120,9 +120,9 @@ export default function Hero() {
                     className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-3xl mx-auto"
                 >
                     {[
-                        { value: "50+", label: "Projects Delivered" },
-                        { value: "98%", label: "Client Satisfaction" },
-                        { value: "5+", label: "Years Experience" },
+                        { value: "2+", label: "Projects Delivered" },
+                        { value: "100%", label: "Client Satisfaction" },
+                        { value: "1+", label: "Years Experience" },
                         { value: "24/7", label: "Support Available" },
                     ].map((stat, i) => (
                         <div key={i} className="text-center">

@@ -9,9 +9,71 @@ const navLinks = [
     { name: "Services", href: "#services" },
     { name: "Team", href: "#team" },
     { name: "Portfolio", href: "#portfolio" },
-    { name: "Testimonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" },
 ];
+
+// Animated logo component — Typewriter Effect
+function AnimatedLogo() {
+    const fullText = "DreamSphere";
+    const [displayCount, setDisplayCount] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (!isDeleting) {
+                if (displayCount < fullText.length) {
+                    setDisplayCount(displayCount + 1);
+                } else {
+                    // Pause at full text before deleting
+                    setTimeout(() => setIsDeleting(true), 1500);
+                }
+            } else {
+                if (displayCount > 0) {
+                    setDisplayCount(displayCount - 1);
+                } else {
+                    // Pause when empty before typing again
+                    setTimeout(() => setIsDeleting(false), 500);
+                }
+            }
+        }, isDeleting ? 60 : 120);
+
+        return () => clearTimeout(timeout);
+    }, [displayCount, isDeleting]);
+
+    const visibleText = fullText.slice(0, displayCount);
+    const dreamPart = visibleText.slice(0, Math.min(displayCount, 5));
+    const spherePart = displayCount > 5 ? visibleText.slice(5) : "";
+
+    return (
+        <a href="#" className="flex items-center gap-2 group">
+            <motion.div
+                initial={{ rotate: -180, scale: 0 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{ duration: 0.8, type: "spring", stiffness: 200 }}
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl btn-gradient flex items-center justify-center font-bold text-[#0E1A14] text-sm sm:text-lg relative overflow-hidden"
+            >
+                DS
+                <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12"
+                    animate={{ x: ["-150%", "250%"] }}
+                    transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        repeatDelay: 4,
+                        ease: "easeInOut",
+                    }}
+                />
+            </motion.div>
+
+            {/* Typewriter text */}
+            <span className="text-lg sm:text-xl font-bold font-[family-name:var(--font-outfit)] min-w-[130px] sm:min-w-[155px]">
+                <span className="text-text-primary">{dreamPart}</span>
+                <span className="text-gradient">{spherePart}</span>
+                <span className="inline-block w-[2px] h-[1.1em] bg-accent align-middle ml-[1px] animate-pulse" />
+            </span>
+        </a>
+    );
+}
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +85,6 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Lock body scroll when mobile menu is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden";
@@ -41,23 +102,14 @@ export default function Navbar() {
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? "bg-[#0E1A14]/90 backdrop-blur-xl border-b border-[#49E29B]/10"
-                    : "bg-transparent"
+                ? "bg-[#0E1A14]/90 backdrop-blur-xl border-b border-[#49E29B]/10"
+                : "bg-transparent"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 sm:h-20">
-                    {/* Logo */}
-                    <a href="#" className="flex items-center gap-2 group">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl btn-gradient flex items-center justify-center font-bold text-[#0E1A14] text-sm sm:text-lg">
-                            DS
-                        </div>
-                        <span className="text-lg sm:text-xl font-bold text-text-primary font-[family-name:var(--font-outfit)]">
-                            Dream<span className="text-gradient">Sphere</span>
-                        </span>
-                    </a>
+                    <AnimatedLogo />
 
-                    {/* Desktop Nav */}
                     <div className="hidden lg:flex items-center gap-6 xl:gap-8">
                         {navLinks.map((link) => (
                             <a
@@ -77,7 +129,6 @@ export default function Navbar() {
                         </a>
                     </div>
 
-                    {/* Mobile Hamburger */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="lg:hidden text-text-primary p-2 -mr-2"
@@ -88,7 +139,6 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu — full screen overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div

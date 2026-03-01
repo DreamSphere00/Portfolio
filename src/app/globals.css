@@ -72,3 +72,39 @@ body {
 .star-filled {
   color: #49E29B;
 }
+
+/* Negative Mask Effect for DreamSphere logo */
+@keyframes mask-sweep {
+
+  0%,
+  100% {
+    left: -30px;
+  }
+
+  40%,
+  60% {
+    left: calc(100% + 10px);
+  }
+}
+
+.negative-mask-circle>div {
+  animation: mask-sweep 5s ease-in-out infinite;
+}
+
+.negative-mask-text {
+  clip-path: circle(11px at var(--mask-x, -30px) 50%);
+  animation: mask-clip-sweep 5s ease-in-out infinite;
+}
+
+@keyframes mask-clip-sweep {
+
+  0%,
+  100% {
+    clip-path: circle(11px at -30px 50%);
+  }
+
+  40%,
+  60% {
+    clip-path: circle(11px at calc(100% + 10px) 50%);
+  }
+}

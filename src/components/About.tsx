@@ -47,7 +47,7 @@ export default function About() {
                         Crafting <span className="text-gradient">Digital Excellence</span>
                     </h2>
                     <p className="text-text-secondary text-sm sm:text-base md:text-lg mt-4 sm:mt-6 max-w-2xl mx-auto leading-relaxed px-2">
-                        We&apos;re a passionate team of five who believe that great digital
+                        We&apos;re a passionate team of three who believe that great digital
                         products are born at the intersection of strategy, design, and
                         technology. We don&apos;t just build websites — we build growth engines.
                     </p>

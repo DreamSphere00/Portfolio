@@ -2,33 +2,32 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight, Github } from "lucide-react";
 
 const projects = [
     {
-        title: "FinVault — Fintech Dashboard",
-        category: "Web App • UI/UX • Backend",
+        title: "CyberWarFare Labs",
+        category: "MERN Stack • Full Stack",
         description:
-            "A comprehensive fintech dashboard enabling real-time portfolio tracking, analytics, and automated reporting for 10,000+ active users.",
-        image: "/projects/fintech.webp",
-        link: "#",
+            "A sleek cybersecurity course platform built with the MERN stack. Simulates a course marketplace with Black Friday deals, user authentication, and course subscriptions. Deployed and live!",
+        github: "https://github.com/Abhich05/cyberWarFare",
+        gradient: "from-red-500/20 to-orange-500/20",
     },
     {
-        title: "MediConnect — Healthcare Platform",
-        category: "Full Stack • Automation",
+        title: "Court Booking Platform",
+        category: "Full Stack • Concurrency",
         description:
-            "End-to-end telemedicine platform with AI-powered symptom analysis, appointment scheduling, and secure patient record management.",
-        image: "/projects/healthcare.webp",
-        link: "#",
+            "Production-ready platform with atomic multi-resource bookings, stacked dynamic pricing, concurrency handling, waitlist system, and a full React frontend.",
+        github: "https://github.com/Abhich05/CourtBooking",
+        gradient: "from-blue-500/20 to-cyan-500/20",
     },
     {
-        title: "ShopSphere — E-Commerce Redesign",
-        category: "UI/UX • Web Development",
+        title: "Saaro Listing Web",
+        category: "Next.js • Monorepo",
         description:
-            "Complete e-commerce platform redesign that increased conversion rates by 45% through optimized UX flows and modern visual design.",
-        image: "/projects/ecommerce.webp",
-        link: "#",
+            "Saaro Health website frontend built with Next.js 15 (Pages Router + App Router for SEO and blog) in a monorepo structure with a backend placeholder for future API services.",
+        github: "https://github.com/Abhich05/saaro-listing-web",
+        gradient: "from-green-500/20 to-emerald-500/20",
     },
 ];
 
@@ -52,15 +51,15 @@ export default function Portfolio() {
                         Our Work
                     </span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 sm:mt-4 font-[family-name:var(--font-outfit)]">
-                        Featured <span className="text-gradient">Case Studies</span>
+                        Featured <span className="text-gradient">Projects</span>
                     </h2>
                     <p className="text-text-secondary text-sm sm:text-base md:text-lg mt-4 sm:mt-6 max-w-2xl mx-auto leading-relaxed px-2">
-                        Real projects, real results. Here&apos;s a glimpse of the digital
-                        experiences we&apos;ve crafted for our clients.
+                        Real projects, real code. Here&apos;s a glimpse of what we&apos;ve
+                        been building — all open source on GitHub.
                     </p>
                 </motion.div>
 
-                {/* Projects Grid — 1 col mobile, 2 col md, 3 col lg */}
+                {/* Projects Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                     {projects.map((project, index) => (
                         <motion.div
@@ -71,16 +70,15 @@ export default function Portfolio() {
                             className={`group relative rounded-2xl bg-gradient-card border border-[#49E29B]/10 hover:border-[#49E29B]/30 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(73,226,155,0.1)] ${index === 2 ? "md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none" : ""
                                 }`}
                         >
-                            {/* Image */}
-                            <div className="relative w-full aspect-video overflow-hidden bg-[#1a2f22]">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#16251C]/80 to-transparent" />
+                            {/* Gradient Preview instead of image */}
+                            <div className={`relative w-full aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
+                                <div className="flex flex-col items-center gap-2">
+                                    <Github size={36} className="text-text-primary/40" />
+                                    <span className="text-text-primary/50 text-xs font-medium uppercase tracking-wider">
+                                        Open Source
+                                    </span>
+                                </div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#16251C]/90 to-transparent" />
                             </div>
 
                             {/* Content */}
@@ -95,10 +93,13 @@ export default function Portfolio() {
                                     {project.description}
                                 </p>
                                 <a
-                                    href={project.link}
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 mt-4 sm:mt-6 text-accent font-semibold text-sm group/btn hover:gap-3 transition-all duration-300"
                                 >
-                                    View Case Study
+                                    <Github size={16} />
+                                    View on GitHub
                                     <ArrowUpRight
                                         size={16}
                                         className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
