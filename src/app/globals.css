@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary-bg: #0E1A14;
+  --color-secondary-bg: #16251C;
+  --color-accent: #49E29B;
+  --color-accent-secondary: #6EF2B3;
+  --color-text-primary: #F5F7F6;
+  --color-text-secondary: #A0B3A7;
+  --color-highlight: #5FF0A5;
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0E1A14;
+  color: #F5F7F6;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0E1A14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #49E29B40;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #49E29B80;
+}
+
+/* Glow utilities */
+.glow-accent {
+  box-shadow: 0 0 20px rgba(73, 226, 155, 0.15), 0 0 60px rgba(73, 226, 155, 0.05);
+}
+
+.glow-accent-strong {
+  box-shadow: 0 0 30px rgba(73, 226, 155, 0.25), 0 0 80px rgba(73, 226, 155, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #49E29B, #6EF2B3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-main {
+  background: linear-gradient(135deg, #0E1A14 0%, #16251C 100%);
+}
+
+.bg-gradient-card {
+  background: linear-gradient(135deg, #16251C 0%, #1a2f22 100%);
+}
+
+.btn-gradient {
+  background: linear-gradient(90deg, #49E29B, #6EF2B3);
+}
+
+/* Star rating */
+.star-filled {
+  color: #49E29B;
+}

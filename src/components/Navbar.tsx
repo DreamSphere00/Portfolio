@@ -1,0 +1,128 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Team", href: "#team" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact", href: "#contact" },
+];
+
+export default function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isOpen]);
+
+    return (
+        <motion.nav
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+                    ? "bg-[#0E1A14]/90 backdrop-blur-xl border-b border-[#49E29B]/10"
+                    : "bg-transparent"
+                }`}
+        >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16 sm:h-20">
+                    {/* Logo */}
+                    <a href="#" className="flex items-center gap-2 group">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl btn-gradient flex items-center justify-center font-bold text-[#0E1A14] text-sm sm:text-lg">
+                            DS
+                        </div>
+                        <span className="text-lg sm:text-xl font-bold text-text-primary font-[family-name:var(--font-outfit)]">
+                            Dream<span className="text-gradient">Sphere</span>
+                        </span>
+                    </a>
+
+                    {/* Desktop Nav */}
+                    <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className="text-text-secondary hover:text-accent transition-colors duration-300 text-sm font-medium relative group"
+                            >
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
+                            </a>
+                        ))}
+                        <a
+                            href="#contact"
+                            className="btn-gradient text-[#0E1A14] px-5 xl:px-6 py-2.5 rounded-full text-sm font-semibold hover:shadow-[0_0_20px_rgba(73,226,155,0.4)] transition-all duration-300 hover:scale-105"
+                        >
+                            Get in Touch
+                        </a>
+                    </div>
+
+                    {/* Mobile Hamburger */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="lg:hidden text-text-primary p-2 -mr-2"
+                        aria-label="Toggle menu"
+                    >
+                        {isOpen ? <X size={22} /> : <Menu size={22} />}
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile Menu — full screen overlay */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="lg:hidden bg-[#0E1A14]/98 backdrop-blur-xl border-b border-[#49E29B]/10"
+                    >
+                        <div className="px-4 sm:px-6 py-4 flex flex-col gap-1">
+                            {navLinks.map((link, index) => (
+                                <motion.a
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: index * 0.05 }}
+                                    className="text-text-secondary hover:text-accent hover:bg-[#49E29B]/5 transition-all duration-300 text-base py-3 px-3 rounded-xl"
+                                >
+                                    {link.name}
+                                </motion.a>
+                            ))}
+                            <a
+                                href="#contact"
+                                onClick={() => setIsOpen(false)}
+                                className="btn-gradient text-[#0E1A14] px-6 py-3 rounded-full text-sm font-semibold text-center hover:shadow-[0_0_20px_rgba(73,226,155,0.4)] transition-all duration-300 mt-3"
+                            >
+                                Get in Touch
+                            </a>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </motion.nav>
+    );
+}
