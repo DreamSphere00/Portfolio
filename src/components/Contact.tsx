@@ -181,11 +181,31 @@ export default function Contact() {
                                 </div>
                             </div>
                         </div>
-                        <a
-                            href="https://calendly.com/dreamsphere00/30min"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-start gap-3 sm:gap-4 group mt-5 sm:mt-8"
+                        <button
+                            type="button"
+                            onClick={() => {
+                                // Load Calendly embed script if not already loaded
+                                if (!(window as unknown as Record<string, unknown>).Calendly) {
+                                    const link = document.createElement("link");
+                                    link.href = "https://assets.calendly.com/assets/external/widget.css";
+                                    link.rel = "stylesheet";
+                                    document.head.appendChild(link);
+
+                                    const script = document.createElement("script");
+                                    script.src = "https://assets.calendly.com/assets/external/widget.js";
+                                    script.onload = () => {
+                                        (window as unknown as Record<string, { initPopupWidget: (opts: Record<string, unknown>) => void }>).Calendly.initPopupWidget({
+                                            url: "https://calendly.com/dreamsphere00/30min?background_color=0e1a14&text_color=e8f5e9&primary_color=49e29b",
+                                        });
+                                    };
+                                    document.head.appendChild(script);
+                                } else {
+                                    (window as unknown as Record<string, { initPopupWidget: (opts: Record<string, unknown>) => void }>).Calendly.initPopupWidget({
+                                        url: "https://calendly.com/dreamsphere00/30min?background_color=0e1a14&text_color=e8f5e9&primary_color=49e29b",
+                                    });
+                                }
+                            }}
+                            className="flex items-start gap-3 sm:gap-4 group mt-5 sm:mt-8 cursor-pointer text-left"
                         >
                             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#49E29B]/10 flex items-center justify-center shrink-0 group-hover:bg-[#49E29B]/20 transition-colors duration-300">
                                 <Calendar className="text-accent" size={18} />
@@ -196,7 +216,7 @@ export default function Contact() {
                                     Schedule a 30-min consultation
                                 </p>
                             </div>
-                        </a>
+                        </button>
 
                         {/* Social Icons */}
                         <div className="mt-8 sm:mt-12">
