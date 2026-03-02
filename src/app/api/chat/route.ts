@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
 
         if (!apiKey || apiKey === "your_gemini_api_key_here") {
             return NextResponse.json(
-                { error: "Gemini API key not configured. Please add your API key to .env.local" },
+                { error: "Oops! Orbi is taking a quick nap 😴 Please reach out to us at support@dreamsphere.online or book a free consultation!" },
                 { status: 500 }
             );
         }
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
         if (!messages || !Array.isArray(messages) || messages.length === 0) {
             return NextResponse.json(
-                { error: "Messages are required" },
+                { error: "Hmm, I didn't catch that. Could you try sending your message again? 🤔" },
                 { status: 400 }
             );
         }
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
     } catch (error) {
         console.error("Chat API error:", error);
         return NextResponse.json(
-            { error: "Failed to generate response. Please try again." },
+            { error: "Sorry, I'm having a little trouble right now! 😅 Please try again in a moment, or feel free to reach us at support@dreamsphere.online" },
             { status: 500 }
         );
     }
