@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 const projects = [
     {
@@ -10,7 +10,7 @@ const projects = [
         category: "MERN Stack • Full Stack",
         description:
             "A sleek cybersecurity course platform built with the MERN stack. Simulates a course marketplace with Black Friday deals, user authentication, and course subscriptions. Deployed and live!",
-        github: "https://github.com/Abhich05/cyberWarFare",
+        website: "https://cyber-war-fare.vercel.app/",
         gradient: "from-red-500/20 to-orange-500/20",
     },
     {
@@ -18,7 +18,7 @@ const projects = [
         category: "Full Stack • Concurrency",
         description:
             "Production-ready platform with atomic multi-resource bookings, stacked dynamic pricing, concurrency handling, waitlist system, and a full React frontend.",
-        github: "https://github.com/Abhich05/CourtBooking",
+        website: "http://court-booking-eta.vercel.app/",
         gradient: "from-blue-500/20 to-cyan-500/20",
     },
     {
@@ -26,7 +26,7 @@ const projects = [
         category: "Next.js • Monorepo",
         description:
             "Saaro Health website frontend built with Next.js 15 (Pages Router + App Router for SEO and blog) in a monorepo structure with a backend placeholder for future API services.",
-        github: "https://github.com/Abhich05/saaro-listing-web",
+        website: "https://saaro-listing-web.vercel.app/",
         gradient: "from-green-500/20 to-emerald-500/20",
     },
 ];
@@ -55,7 +55,7 @@ export default function Portfolio() {
                     </h2>
                     <p className="text-text-secondary text-sm sm:text-base md:text-lg mt-4 sm:mt-6 max-w-2xl mx-auto leading-relaxed px-2">
                         Real projects, real code. Here&apos;s a glimpse of what we&apos;ve
-                        been building — all open source on GitHub.
+                        been building — deployed and live.
                     </p>
                 </motion.div>
 
@@ -73,9 +73,9 @@ export default function Portfolio() {
                             {/* Gradient Preview instead of image */}
                             <div className={`relative w-full aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
                                 <div className="flex flex-col items-center gap-2">
-                                    <Github size={36} className="text-text-primary/40" />
+                                    <ExternalLink size={36} className="text-text-primary/40" />
                                     <span className="text-text-primary/50 text-xs font-medium uppercase tracking-wider">
-                                        Open Source
+                                        Live Project
                                     </span>
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#16251C]/90 to-transparent" />
@@ -93,13 +93,13 @@ export default function Portfolio() {
                                     {project.description}
                                 </p>
                                 <a
-                                    href={project.github}
+                                    href={project.website}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 mt-4 sm:mt-6 text-accent font-semibold text-sm group/btn hover:gap-3 transition-all duration-300"
                                 >
-                                    <Github size={16} />
-                                    View on GitHub
+                                    <ExternalLink size={16} />
+                                    Visit Website
                                     <ArrowUpRight
                                         size={16}
                                         className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"

@@ -11,7 +11,7 @@ const team = [
         bio: "Backend specialist building robust systems with Java, Spring Boot, Kafka, MySQL, and MongoDB. Passionate about scalable architectures and event-driven design.",
         initials: "VD",
         color: "from-emerald-500 to-teal-600",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/vinaydupad/",
         skills: ["Java", "Spring Boot", "Kafka", "MySQL", "MongoDB"],
     },
     {
@@ -20,8 +20,8 @@ const team = [
         bio: "Full-stack craftsman proficient in the MERN stack, Python, and Firebase. Builds end-to-end web applications from idea to deployment.",
         initials: "AC",
         color: "from-cyan-500 to-blue-600",
-        linkedin: "#",
-        skills: ["MERN", "Python", "Firebase"],
+        linkedin: "https://www.linkedin.com/in/errorwithabhich/",
+        skills: ["MERN", "PERN", "Python", "Firebase", "IoT"],
     },
     {
         name: "Akshaykumar",
@@ -29,7 +29,7 @@ const team = [
         bio: "AI engineer specializing in Python, Machine Learning, workflow automation, and LangGraph. Builds intelligent systems that automate and scale.",
         initials: "AK",
         color: "from-violet-500 to-purple-600",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/akshaykumarhullalli/",
         skills: ["Python", "ML", "Automation", "LangGraph"],
     },
 ];
@@ -86,6 +86,8 @@ export default function Team() {
                                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0E1A14]/50">
                                     <a
                                         href={member.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-accent/90 flex items-center justify-center hover:bg-accent transition-colors duration-200 hover:scale-110"
                                         aria-label={`${member.name}'s LinkedIn`}
                                     >

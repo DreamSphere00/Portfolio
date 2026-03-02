@@ -205,7 +205,7 @@ export default function Contact() {
                                 {[
                                     { icon: Github, href: "#", label: "GitHub" },
                                     { icon: Twitter, href: "#", label: "Twitter" },
-                                    { icon: Linkedin, href: "#", label: "LinkedIn" },
+                                    { icon: Linkedin, href: "https://www.linkedin.com/in/akshaykumarhullalli/", label: "LinkedIn" },
                                     { icon: Instagram, href: "#", label: "Instagram" },
                                 ].map((social, i) => (
                                     <a
