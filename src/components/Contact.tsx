@@ -8,7 +8,7 @@ import {
     MapPin,
     Phone,
     Github,
-    Twitter,
+    Youtube,
     Linkedin,
     Instagram,
     Calendar,
@@ -204,9 +204,9 @@ export default function Contact() {
                             <div className="flex gap-3 sm:gap-4">
                                 {[
                                     { icon: Github, href: "#", label: "GitHub" },
-                                    { icon: Twitter, href: "#", label: "Twitter" },
+                                    { icon: Youtube, href: "http://opener.one/yt/2l419h", label: "YouTube" },
                                     { icon: Linkedin, href: "https://www.linkedin.com/in/akshaykumarhullalli/", label: "LinkedIn" },
-                                    { icon: Instagram, href: "#", label: "Instagram" },
+                                    { icon: Instagram, href: "https://www.instagram.com/dream_tritech?igshid=NjIwNzIyMDk2Mg%3D%3D", label: "Instagram" },
                                 ].map((social, i) => (
                                     <a
                                         key={i}

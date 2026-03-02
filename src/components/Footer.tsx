@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Github, Youtube, Linkedin, Instagram } from "lucide-react";
 
 const quickLinks = [
     { name: "About", href: "#about" },
@@ -10,9 +10,9 @@ const quickLinks = [
 
 const socialLinks = [
     { icon: Github, href: "#", label: "GitHub" },
-    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Youtube, href: "http://opener.one/yt/2l419h", label: "YouTube" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/akshaykumarhullalli/", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Instagram, href: "https://www.instagram.com/dream_tritech?igshid=NjIwNzIyMDk2Mg%3D%3D", label: "Instagram" },
 ];
 
 export default function Footer() {
