@@ -204,7 +204,7 @@ export default function Contact() {
                             <div className="flex gap-3 sm:gap-4">
                                 {[
                                     { icon: Github, href: "#", label: "GitHub" },
-                                    { icon: Youtube, href: "http://opener.one/yt/2l419h", label: "YouTube" },
+                                    { icon: Youtube, href: "https://www.youtube.com/@DreamSphere-1", label: "YouTube" },
                                     { icon: Linkedin, href: "https://www.linkedin.com/in/akshaykumarhullalli/", label: "LinkedIn" },
                                     { icon: Instagram, href: "https://www.instagram.com/dream_tritech?igshid=NjIwNzIyMDk2Mg%3D%3D", label: "Instagram" },
                                 ].map((social, i) => (
