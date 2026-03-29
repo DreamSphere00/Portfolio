@@ -9,7 +9,7 @@ const projects = [
         title: "CyberWarFare Labs",
         category: "MERN Stack • Full Stack",
         description:
-            "A sleek cybersecurity course platform built with the MERN stack. Simulates a course marketplace with Black Friday deals, user authentication, and course subscriptions. Deployed and live!",
+            "A production cybersecurity course platform with user authentication, course subscriptions, and Black Friday deals engine. Demonstrates our capability to build complex, high-traffic web applications.",
         website: "https://cyber-war-fare.vercel.app/",
         gradient: "from-red-500/20 to-orange-500/20",
     },
@@ -17,17 +17,17 @@ const projects = [
         title: "Court Booking Platform",
         category: "Full Stack • Concurrency",
         description:
-            "Production-ready platform with atomic multi-resource bookings, stacked dynamic pricing, concurrency handling, waitlist system, and a full React frontend.",
+            "Atomic multi-resource booking system with stacked dynamic pricing, waitlist management, and concurrency handling — the same booking engine architecture we use for AI Receptionist appointment scheduling.",
         website: "http://court-booking-eta.vercel.app/",
         gradient: "from-blue-500/20 to-cyan-500/20",
     },
     {
-        title: "Saaro Listing Web",
-        category: "Next.js • Monorepo",
+        title: "Saaro Health",
+        category: "Next.js • Healthcare",
         description:
-            "Saaro Health website frontend built with Next.js 15 (Pages Router + App Router for SEO and blog) in a monorepo structure with a backend placeholder for future API services.",
+            "Healthcare platform frontend built with Next.js 15 in a monorepo structure. SEO-optimized with App Router, demonstrating our expertise in building fast, compliant health-tech interfaces.",
         website: "https://saaro-listing-web.vercel.app/",
-        gradient: "from-green-500/20 to-emerald-500/20",
+        gradient: "from-[#49E29B]/20 to-emerald-500/20",
     },
 ];
 
@@ -51,11 +51,12 @@ export default function Portfolio() {
                         Our Work
                     </span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 sm:mt-4 font-[family-name:var(--font-outfit)]">
-                        Featured <span className="text-gradient">Projects</span>
+                        Production-Grade{" "}
+                        <span className="text-gradient">Projects</span>
                     </h2>
                     <p className="text-text-secondary text-sm sm:text-base md:text-lg mt-4 sm:mt-6 max-w-2xl mx-auto leading-relaxed px-2">
-                        Real projects, real code. Here&apos;s a glimpse of what we&apos;ve
-                        been building — deployed and live.
+                        Real projects, deployed and live. Each one showcases the engineering
+                        depth we bring to every AI automation solution we build.
                     </p>
                 </motion.div>
 
@@ -67,13 +68,21 @@ export default function Portfolio() {
                             initial={{ opacity: 0, y: 40 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: 0.1 + index * 0.15 }}
-                            className={`group relative rounded-2xl bg-gradient-card border border-[#49E29B]/10 hover:border-[#49E29B]/30 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(73,226,155,0.1)] ${index === 2 ? "md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none" : ""
-                                }`}
+                            className={`group relative rounded-2xl bg-gradient-card border border-[#49E29B]/10 hover:border-[#49E29B]/30 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(73,226,155,0.1)] ${
+                                index === 2
+                                    ? "md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none"
+                                    : ""
+                            }`}
                         >
-                            {/* Gradient Preview instead of image */}
-                            <div className={`relative w-full aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
+                            {/* Gradient Preview */}
+                            <div
+                                className={`relative w-full aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center`}
+                            >
                                 <div className="flex flex-col items-center gap-2">
-                                    <ExternalLink size={36} className="text-text-primary/40" />
+                                    <ExternalLink
+                                        size={36}
+                                        className="text-text-primary/40"
+                                    />
                                     <span className="text-text-primary/50 text-xs font-medium uppercase tracking-wider">
                                         Live Project
                                     </span>

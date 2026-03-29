@@ -1,18 +1,26 @@
 import Hero from "@/components/Hero";
-import About from "@/components/About";
+import TrustBar from "@/components/TrustBar";
+import PainPoints from "@/components/PainPoints";
+import HowItWorks from "@/components/HowItWorks";
+import Benefits from "@/components/Benefits";
+import Pricing from "@/components/Pricing";
 import Services from "@/components/Services";
-import Team from "@/components/Team";
 import Portfolio from "@/components/Portfolio";
+import FinalCTA from "@/components/FinalCTA";
 import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <About />
+      <TrustBar />
+      <PainPoints />
+      <HowItWorks />
+      <Benefits />
+      <Pricing />
       <Services />
-      <Team />
       <Portfolio />
+      <FinalCTA />
       <Contact />
     </>
   );

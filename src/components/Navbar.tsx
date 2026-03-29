@@ -5,14 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Team", href: "#team" },
+    { name: "How It Works", href: "#how-it-works" },
+    { name: "Benefits", href: "#benefits" },
+    { name: "Pricing", href: "#pricing" },
     { name: "Portfolio", href: "#portfolio" },
     { name: "Contact", href: "#contact" },
 ];
 
-// Animated logo component — Typewriter Effect
 function AnimatedLogo() {
     const fullText = "DreamSphere";
     const [displayCount, setDisplayCount] = useState(0);
@@ -24,14 +23,12 @@ function AnimatedLogo() {
                 if (displayCount < fullText.length) {
                     setDisplayCount(displayCount + 1);
                 } else {
-                    // Pause at full text before deleting
                     setTimeout(() => setIsDeleting(true), 1500);
                 }
             } else {
                 if (displayCount > 0) {
                     setDisplayCount(displayCount - 1);
                 } else {
-                    // Pause when empty before typing again
                     setTimeout(() => setIsDeleting(false), 500);
                 }
             }
@@ -65,7 +62,6 @@ function AnimatedLogo() {
                 />
             </motion.div>
 
-            {/* Typewriter text */}
             <span className="text-lg sm:text-xl font-bold font-[family-name:var(--font-outfit)] min-w-[130px] sm:min-w-[155px]">
                 <span className="text-text-primary">{dreamPart}</span>
                 <span className="text-gradient">{spherePart}</span>
@@ -101,10 +97,11 @@ export default function Navbar() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                ? "bg-[#0E1A14]/90 backdrop-blur-xl border-b border-[#49E29B]/10"
-                : "bg-transparent"
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                scrolled
+                    ? "bg-[#0E1A14]/90 backdrop-blur-xl border-b border-[#49E29B]/10"
+                    : "bg-transparent"
+            }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 sm:h-20">
@@ -122,10 +119,10 @@ export default function Navbar() {
                             </a>
                         ))}
                         <a
-                            href="#contact"
+                            href="#pricing"
                             className="btn-gradient text-[#0E1A14] px-5 xl:px-6 py-2.5 rounded-full text-sm font-semibold hover:shadow-[0_0_20px_rgba(73,226,155,0.4)] transition-all duration-300 hover:scale-105"
                         >
-                            Get in Touch
+                            Book Free Audit
                         </a>
                     </div>
 
@@ -163,11 +160,11 @@ export default function Navbar() {
                                 </motion.a>
                             ))}
                             <a
-                                href="#contact"
+                                href="#pricing"
                                 onClick={() => setIsOpen(false)}
                                 className="btn-gradient text-[#0E1A14] px-6 py-3 rounded-full text-sm font-semibold text-center hover:shadow-[0_0_20px_rgba(73,226,155,0.4)] transition-all duration-300 mt-3"
                             >
-                                Get in Touch
+                                Book Free Audit
                             </a>
                         </div>
                     </motion.div>

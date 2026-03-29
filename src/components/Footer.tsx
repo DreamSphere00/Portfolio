@@ -1,9 +1,9 @@
 import { Github, Youtube, Linkedin, Instagram } from "lucide-react";
 
 const quickLinks = [
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Team", href: "#team" },
+    { name: "How It Works", href: "#how-it-works" },
+    { name: "Benefits", href: "#benefits" },
+    { name: "Pricing", href: "#pricing" },
     { name: "Portfolio", href: "#portfolio" },
     { name: "Contact", href: "#contact" },
 ];
@@ -31,9 +31,10 @@ export default function Footer() {
                             </span>
                         </a>
                         <p className="text-text-secondary text-xs sm:text-sm leading-relaxed max-w-sm">
-                            We build digital experiences that convert. A premium agency
-                            crafting strategy, design, and engineering solutions for
-                            forward-thinking businesses.
+                            We install 24/7 AI Receptionists that answer calls, qualify leads,
+                            and book appointments — so Indian businesses never miss another customer.
+                            Built by an elite team of AI &amp; Automation Engineers with expertise
+                            in LangGraph, Python, and production-grade deployments.
                         </p>
                     </div>
 
@@ -76,6 +77,9 @@ export default function Footer() {
                         <a href="mailto:support@dreamsphere.online" className="text-text-secondary text-xs sm:text-sm mt-4 sm:mt-6 hover:text-accent transition-colors duration-300 block">
                             support@dreamsphere.online
                         </a>
+                        <a href="tel:+919483391275" className="text-text-secondary text-xs sm:text-sm mt-2 hover:text-accent transition-colors duration-300 block">
+                            +91 9483391275
+                        </a>
                     </div>
                 </div>
 
@@ -85,7 +89,7 @@ export default function Footer() {
                         &copy; {new Date().getFullYear()} DreamSphere. All rights reserved.
                     </p>
                     <p className="text-text-secondary text-[10px] sm:text-xs">
-                        Crafted with passion by the DreamSphere team.
+                        AI Automation Agency — Bengaluru, India
                     </p>
                 </div>
             </div>

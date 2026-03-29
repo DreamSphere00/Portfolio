@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 import {
     Send,
     Mail,
@@ -12,8 +12,8 @@ import {
     Linkedin,
     Instagram,
     Calendar,
-    X,
 } from "lucide-react";
+import BookingModal from "./BookingModal";
 
 export default function Contact() {
     const ref = useRef(null);
@@ -24,49 +24,7 @@ export default function Contact() {
         details: "",
     });
     const [submitted, setSubmitted] = useState(false);
-    const [showCalendly, setShowCalendly] = useState(false);
-    const calendlyContainerRef = useRef<HTMLDivElement>(null);
-
-    // Load Calendly script once and init inline widget when modal opens
-    useEffect(() => {
-        if (!showCalendly) return;
-
-        // Prevent body scroll when modal is open
-        document.body.style.overflow = "hidden";
-
-        const loadAndInit = () => {
-            if (calendlyContainerRef.current) {
-                calendlyContainerRef.current.innerHTML = "";
-                (window as unknown as Record<string, { initInlineWidget: (opts: Record<string, unknown>) => void }>).Calendly.initInlineWidget({
-                    url: "https://calendly.com/dreamsphere00/30min?background_color=0e1a14&text_color=e8f5e9&primary_color=49e29b&hide_gdpr_banner=1",
-                    parentElement: calendlyContainerRef.current,
-                });
-            }
-        };
-
-        if ((window as unknown as Record<string, unknown>).Calendly) {
-            loadAndInit();
-        } else {
-            // Load CSS
-            const link = document.createElement("link");
-            link.href = "https://assets.calendly.com/assets/external/widget.css";
-            link.rel = "stylesheet";
-            document.head.appendChild(link);
-
-            // Load JS
-            const script = document.createElement("script");
-            script.src = "https://assets.calendly.com/assets/external/widget.js";
-            script.async = true;
-            script.onload = loadAndInit;
-            document.head.appendChild(script);
-        }
-
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [showCalendly]);
-
-    const closeCalendly = useCallback(() => setShowCalendly(false), []);
+    const [showBooking, setShowBooking] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -168,7 +126,7 @@ export default function Contact() {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full btn-gradient text-[#0E1A14] px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold flex items-center justify-center gap-2 hover:shadow-[0_0_30px_rgba(73,226,155,0.35)] transition-all duration-300 hover:scale-[1.02] text-sm sm:text-base"
+                                    className="w-full btn-gradient text-[#0E1A14] px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold flex items-center justify-center gap-2 hover:shadow-[0_0_30px_rgba(73,226,155,0.35)] transition-all duration-300 hover:scale-[1.02] text-sm sm:text-base cursor-pointer"
                                 >
                                     {submitted ? (
                                         "Message Sent! ✓"
@@ -226,9 +184,11 @@ export default function Contact() {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Book a Call — opens BookingModal */}
                             <button
                                 type="button"
-                                onClick={() => setShowCalendly(true)}
+                                onClick={() => setShowBooking(true)}
                                 className="flex items-start gap-3 sm:gap-4 group mt-5 sm:mt-8 cursor-pointer text-left"
                             >
                                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#49E29B]/10 flex items-center justify-center shrink-0 group-hover:bg-[#49E29B]/20 transition-colors duration-300">
@@ -237,7 +197,7 @@ export default function Contact() {
                                 <div>
                                     <h4 className="font-semibold text-sm">Book a Call</h4>
                                     <p className="text-text-secondary text-xs sm:text-sm mt-1 group-hover:text-accent transition-colors duration-300">
-                                        Schedule a 30-min consultation
+                                        Schedule a free 15-min AI Audit
                                     </p>
                                 </div>
                             </button>
@@ -268,72 +228,7 @@ export default function Contact() {
                 </div>
             </section>
 
-            {/* Glassmorphism Calendly Modal */}
-            <AnimatePresence>
-                {showCalendly && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6"
-                        onClick={closeCalendly}
-                    >
-                        {/* Blurred glassmorphism backdrop */}
-                        <div className="absolute inset-0 bg-[#0E1A14]/70 backdrop-blur-xl" />
-
-                        {/* Floating glow orbs behind the card */}
-                        <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-[#49E29B]/8 rounded-full blur-[150px] pointer-events-none" />
-                        <div className="absolute bottom-1/4 right-1/4 w-[250px] h-[250px] bg-[#49E29B]/5 rounded-full blur-[120px] pointer-events-none" />
-
-                        {/* Glass card */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative w-full max-w-3xl h-[80vh] max-h-[700px] rounded-2xl sm:rounded-3xl overflow-hidden
-                                       bg-[#16251C]/60 backdrop-blur-2xl
-                                       border border-[#49E29B]/20
-                                       shadow-[0_0_80px_rgba(73,226,155,0.08),0_25px_50px_rgba(0,0,0,0.4)]"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            {/* Header bar */}
-                            <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-[#49E29B]/10 bg-[#0E1A14]/40">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-9 h-9 rounded-lg bg-[#49E29B]/15 flex items-center justify-center">
-                                        <Calendar className="text-accent" size={18} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-sm sm:text-base font-bold font-[family-name:var(--font-outfit)] text-text-primary">
-                                            Schedule a Consultation
-                                        </h3>
-                                        <p className="text-[11px] sm:text-xs text-text-secondary">
-                                            30-min free consultation with DreamSphere
-                                        </p>
-                                    </div>
-                                </div>
-                                <button
-                                    onClick={closeCalendly}
-                                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#49E29B]/10 flex items-center justify-center
-                                               hover:bg-[#49E29B]/20 hover:text-accent text-text-secondary
-                                               transition-all duration-200 hover:scale-105"
-                                    aria-label="Close scheduling modal"
-                                >
-                                    <X size={18} />
-                                </button>
-                            </div>
-
-                            {/* Calendly embed container */}
-                            <div
-                                ref={calendlyContainerRef}
-                                className="w-full h-[calc(100%-65px)] overflow-hidden"
-                                style={{ minWidth: "320px" }}
-                            />
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <BookingModal isOpen={showBooking} onClose={() => setShowBooking(false)} />
         </>
     );
 }

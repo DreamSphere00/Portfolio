@@ -2,44 +2,44 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Globe, Server, Figma, MessageSquareMore, Zap, Cloud } from "lucide-react";
+import { PhoneCall, MessageSquareMore, Zap, MessageCircle, Globe, Cloud } from "lucide-react";
 
 const services = [
     {
-        icon: Globe,
-        title: "Web Development",
+        icon: PhoneCall,
+        title: "AI Voice Agents",
         description:
-            "High-performance, responsive websites and web applications built with modern frameworks like React, Next.js, and Vue.js that deliver exceptional user experiences.",
-    },
-    {
-        icon: Server,
-        title: "Backend Systems",
-        description:
-            "Scalable, secure server-side architectures using Spring Boot, Node.js, Python, and cloud infrastructure that power your applications with reliability and speed.",
-    },
-    {
-        icon: Figma,
-        title: "UI/UX Design",
-        description:
-            "Research-driven design systems and interfaces that balance aesthetics with usability, turning complex workflows into intuitive digital experiences.",
+            "Intelligent voice-based AI receptionists that answer calls, understand context, qualify leads, and book appointments — sounding natural and professional 24/7.",
     },
     {
         icon: MessageSquareMore,
-        title: "Chatbot Integration",
+        title: "AI Chatbots (NLP/ML)",
         description:
-            "Intelligent conversational AI solutions powered by NLP and machine learning that automate customer support and boost engagement 24/7.",
+            "Conversational AI chatbots powered by NLP and machine learning for website, WhatsApp, and social channels. Automate customer support and boost engagement around the clock.",
     },
     {
         icon: Zap,
-        title: "Automation",
+        title: "Workflow Automation",
         description:
-            "End-to-end workflow automation that eliminates repetitive tasks, integrates your tools, and accelerates your business processes at scale.",
+            "End-to-end business process automation using LangGraph and Python. Eliminate repetitive tasks, connect your tools, and let AI handle the busywork at scale.",
+    },
+    {
+        icon: MessageCircle,
+        title: "WhatsApp Integration",
+        description:
+            "Seamless WhatsApp Business API integration for automated appointment reminders, lead follow-ups, booking confirmations, and customer nurturing sequences.",
+    },
+    {
+        icon: Globe,
+        title: "Custom Web Applications",
+        description:
+            "High-performance, conversion-optimized web apps built with React, Next.js, and modern full-stack technologies. From landing pages to complex dashboards.",
     },
     {
         icon: Cloud,
-        title: "Cloud Deployment",
+        title: "Cloud & Deployment",
         description:
-            "Seamless deployment and scaling on AWS, GCP, and Azure. CI/CD pipelines, containerization with Docker, and infrastructure management for production-grade apps.",
+            "Production-grade deployment on AWS, GCP, and Azure with Docker, CI/CD pipelines, and 99.9% uptime monitoring. We handle the infrastructure so you don't have to.",
     },
 ];
 
@@ -52,7 +52,6 @@ export default function Services() {
             id="services"
             className="relative py-16 sm:py-24 md:py-28 lg:py-36 bg-[#0E1A14]"
         >
-            {/* Subtle background accent */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-[#49E29B]/5 rounded-full blur-[120px] sm:blur-[200px]" />
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
@@ -64,18 +63,19 @@ export default function Services() {
                     className="text-center mb-12 sm:mb-16 md:mb-20"
                 >
                     <span className="text-accent text-xs sm:text-sm font-semibold uppercase tracking-widest">
-                        What We Do
+                        What We Build
                     </span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 sm:mt-4 font-[family-name:var(--font-outfit)]">
-                        Services That <span className="text-gradient">Drive Results</span>
+                        AI Solutions That{" "}
+                        <span className="text-gradient">Drive Revenue</span>
                     </h2>
                     <p className="text-text-secondary text-sm sm:text-base md:text-lg mt-4 sm:mt-6 max-w-2xl mx-auto leading-relaxed px-2">
-                        From frontend to backend, design to deployment — we offer a complete
-                        suite of digital services to bring your vision to life.
+                        Beyond AI Receptionists — we build the full stack of AI automation
+                        your business needs to grow without growing your headcount.
                     </p>
                 </motion.div>
 
-                {/* Services Grid — 1 col mobile, 2 col sm/md, 3 col lg */}
+                {/* Services Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                     {services.map((service, index) => (
                         <motion.div
